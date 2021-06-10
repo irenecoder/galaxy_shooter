@@ -13,7 +13,9 @@ def check_events(ship):
                 elif event.type==pygame.K_RCTRL:
                     ship.rect.centerx -=1
 
-            # elif event.type == pygame.KEYUP:
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_1:
+                    print("you unpressed me ")
 
 def update_screen(al_settings,screen,ship):
     #update images on the screen and flip on the new screen
