@@ -11,7 +11,7 @@ def run_game():
     al_settings = Settings()
     screen = pygame.display.set_mode((al_settings.screen_width,al_settings.screen_height))
     pygame.display.set_caption("Alien Invasion")
-    ship=Ship(screen)
+    ship=Ship(al_settings,screen)
     #set background color
     # bg_color = (230,20,200)
 
@@ -22,6 +22,8 @@ def run_game():
         """for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit() """
+
+        ship.update()
 
         gf.update_screen(al_settings,screen,ship)
         

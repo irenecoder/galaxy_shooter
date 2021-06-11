@@ -8,10 +8,19 @@ def check_events(ship):
                 sys.exit()
             elif event.type==pygame.KEYDOWN:
                 if event.key==pygame.K_RIGHT:
-                    #shift ship to the right
+                    ship.moving_right = True
+                elif event.key==pygame.K_LEFT:
+                    ship.moving_left= True
+
+            elif event.type == pygame.KEYUP:
+                if event.key==pygame.K_RIGHT:
+                    ship.moving_right = False
                     ship.rect.centerx +=1
-                elif event.type==pygame.K_RCTRL:
+                elif event.key==pygame.K_LEFT:
+                    ship.moving_left = False
+                    #shift ship to the right
                     ship.rect.centerx -=1
+                
 
             # elif event.type == pygame.KEYUP:
             #     if event.key == pygame.K_1:
