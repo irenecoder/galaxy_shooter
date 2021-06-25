@@ -6,7 +6,7 @@ class Ship():
         self.screen=screen
         self.al_settings = al_settings
         #load image and get its rect
-        self.image= pygame.image.load("images/rocket1.bmp")
+        self.image= pygame.image.load("images/rocket2b.bmp")
         self.rect=self.image.get_rect()
         self.screen_rect=screen.get_rect()
 
@@ -26,8 +26,9 @@ class Ship():
         #update the ship's center value not the rect
         if self.moving_right and self.rect.right<self.screen_rect.right:
             self.rect.centerx += self.al_settings.ship_speed_factor
-        if self.moving_left and self.rect.left> 0 :
+        if self.moving_left and self.rect.left>0 :
             self.rect.centerx -= self.al_settings.ship_speed_factor
+
             #update rect object from self.center
             self.rect.centerx = self.center
 
