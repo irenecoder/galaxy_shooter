@@ -26,8 +26,8 @@ class Ship():
         #update the ship's center value not the rect
         if self.moving_right and self.rect.right<self.screen_rect.right:
             self.rect.centerx += self.al_settings.ship_speed_factor
-        if self.moving_left and self.rect.left>0 :
-            self.rect.centerx -= self.al_settings.ship_speed_factor
+        if self.moving_left and self.rect.left>0:
+            self.center-= self.al_settings.ship_speed_factor
 
             #update rect object from self.center
             self.rect.centerx = self.center

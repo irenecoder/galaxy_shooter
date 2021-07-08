@@ -4,7 +4,9 @@ import pygame
 from pygame.sprite import Group
 from settings import Settings
 from ship import Ship
+from alien_ship import Alien
 import game_functions as gf
+from bullet import Bullet
 
 
 def run_game():
@@ -19,16 +21,41 @@ def run_game():
     #set background color
     # bg_color = (230,20,200)
 
+    #make an alien
+    alien = Alien(al_settings,screen)
+
     #start the main loop for the game
     while True:
-      
+        for event in pygame.event.get():
+            if event.type == pygame.K_ESCAPE:
+                sys.exit()
+            elif event.type== pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    ship.moving_right = True
+                if event.key == pygame.K_LEFT:
+                    ship.moving_left = True
+                if event.key == pygame.K_SPACE:
+                    #create a new bullet
+                    gf.fire_bullet(al_settings,screen, ship,bullets)
+                if event.key == pygame.K_ESCAPE:
+                    sys.exit()
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_RIGHT:
+                    ship.moving_right = False
+                if event.key == pygame.K_LEFT:
+                    ship.moving_left = False
+
+
+
+
+        
         #watch for keyboard and mouse events
-        gf.check_event(al_settings,screen,ship,bullets)
+        #gf.check_event(al_settings,screen,ship,bullets)
         #respond to key presses and mouse events
         ship.update()
-        bullets.update()
-
-        gf.update_screen(al_settings,screen,ship,bullets)
+        gf.update_bullets(bullets)
+       
+        gf.update_screen(al_settings,screen,ship,alien,bullets)
         
         
 
