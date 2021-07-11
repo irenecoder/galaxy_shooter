@@ -18,6 +18,10 @@ def run_game():
     ship=Ship(al_settings,screen)
     #make a group to store bullets
     bullets = Group()
+    aliens = Group()
+
+    #create the group of aliens
+    gf.create_fleet(al_settings,screen,aliens)
     #set background color
     # bg_color = (230,20,200)
 
@@ -55,7 +59,7 @@ def run_game():
         ship.update()
         gf.update_bullets(bullets)
        
-        gf.update_screen(al_settings,screen,ship,alien,bullets)
+        gf.update_screen(al_settings,screen,ship,aliens,bullets)
         
         
 

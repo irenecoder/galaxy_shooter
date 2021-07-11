@@ -6,7 +6,7 @@ class Ship():
         self.screen=screen
         self.al_settings = al_settings
         #load image and get its rect
-        self.image= pygame.image.load("images/rocket2b.bmp")
+        self.image= pygame.image.load("images/rocket1b.bmp")
         self.rect=self.image.get_rect()
         self.screen_rect=screen.get_rect()
 
