@@ -60,7 +60,8 @@ def run_game():
         gf.update_bullets(bullets)
        
         gf.update_screen(al_settings,screen,ship,aliens,bullets)
-        
+        #create fleet of aliens
+        gf.create_fleet(al_settings, screen, ship,aliens)
         
 
 run_game()
