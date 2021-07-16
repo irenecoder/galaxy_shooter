@@ -74,7 +74,7 @@ def get_number_aliens_x(al_settings,alien_width):
 
 def get_number_rows(al_settings,ship_height,alien_height):
     #determine the number of rows of aliens that fit on the screen
-    available_space_y = (al_settings.screen_height - (3 * alien_height)- ship_height)
+    available_space_y = (al_settings.screen_height - (2* alien_height)- ship_height)
     number_rows = int(available_space_y / (2 * alien_height))
     return number_rows
 
