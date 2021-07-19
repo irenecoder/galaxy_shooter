@@ -14,5 +14,10 @@ class Settings():
         self.bg_color =(6,0,4)
         #ship settings
         self.ship_speed_factor= 1
+        #alien settings
+        self.alien_speed_factor = 1
+        #self.fleet_drop_speed = 10
+        #fleet direction of one represents right, -1 represents left
+       # self.fleet_direction = 1.5
         
 

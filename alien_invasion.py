@@ -58,7 +58,7 @@ def run_game():
         #respond to key presses and mouse events
         ship.update()
         gf.update_bullets(bullets)
-       
+        gf.update_aliens(aliens)
         gf.update_screen(al_settings,screen,ship,aliens,bullets)
         
         
