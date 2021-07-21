@@ -38,14 +38,28 @@ def fire_bullet(al_settings,screen,ship,bullets):
     new_bullet = Bullet(al_settings,screen,ship)
     bullets.add(new_bullet)
         
-def update_bullets(aliens,bullets):
+def update_bullets(al_settings,screen,ship,aliens,bullets):
 
     """update position of bullets and get rid of old bullets"""
     #update bullet positions
     bullets.update()
+    #Get rid of bullets that have disappeared
+    for bullet in bullets.copy():
+        if bullet.rect.bottom <= 0:         
+            bullets.remove(bullet)
+            #print(len(bullets))
+    check_bullet_alien_collision(al_settings,screen,ship,aliens,bullets)
+
+def check_bullet_alien_collision(al_settings,screen,ship,aliens,bullets):
+
     #check for any bullets that have hit aliens
     #if so get rid of the bullet and the alien
     collisions = pygame.sprite.groupcollide(bullets,aliens,False,True)
+
+    if len(aliens) == 0:
+        #destroy existing bullets and create new fleet
+        bullets.empty()
+        create_fleet(al_settings, screen, ship, aliens)
 
     #Get rid of bullets that have disappeared
     for bullet in bullets.copy():

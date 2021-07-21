@@ -2,7 +2,7 @@ class Settings():
     #a class to store all settings for alien invasion
     def __init__(self):
         #bullet settings
-        self.bullet_speed_factor = 1
+        self.bullet_speed_factor = 3
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = 255,255,255
