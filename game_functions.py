@@ -69,7 +69,7 @@ def check_bullet_alien_collision(al_settings,screen,ship,aliens,bullets):
             #print(len(bullets))
 
 
-def update_screen(al_settings,screen,ship,aliens,bullets):
+def update_screen(al_settings,screen,stats,ship,aliens,bullets,play_button):
     #update images on the screen and flip on the new screen
      #redraw the screen during each pass through the loop
         screen.fill(al_settings.bg_color)
@@ -80,6 +80,10 @@ def update_screen(al_settings,screen,ship,aliens,bullets):
         
         ship.blitme()
         aliens.draw(screen)
+
+        #draw the play button if the game is inactive
+        if not stats.game_active:
+            play_button.draw_button()
 
         #make most recently drawn screen visible 
         pygame.display.flip()
