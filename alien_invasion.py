@@ -57,6 +57,15 @@ def run_game():
                 if event.key == pygame.K_LEFT:
                     ship.moving_left = False
 
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_x,mouse_y = pygame.mouse.get_pos()
+                check_play_button(stats,play_button,mouse_x,mouse_y)
+
+        def check_play_button(stats,play_button,mouse_x,mouse_y):
+            #start a new game when the player hits play
+            if play_button.rect.collidepoint(mouse_x,mouse_y):
+                stats.game_active = True
+
 
 
 
