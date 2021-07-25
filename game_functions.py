@@ -163,6 +163,7 @@ def ship_hit(al_settings,stats,screen,ship,aliens,bullets):
         sleep(0.5)
     else:
         stats.game_active = False
+        pygame.mouse.set_visible(True)
 
 def check_bottom_aliens(al_settings,stats,screen,ship,aliens,bullets):
     """check if any aliens have reached the bottom of the screen"""
