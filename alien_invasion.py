@@ -65,6 +65,8 @@ def run_game():
             #start a new game when the player hits play
             button_clicked = play_button.rect.collidepoint(mouse_x,mouse_y)
             if button_clicked and not stats.game_active:
+                #reset the game settings
+                al_settings.initialize_dynamic_settings()
                 #hide the mouse cursor
                 pygame.mouse.set_visible(False)
                 #reset game statistics
