@@ -60,6 +60,7 @@ def check_bullet_alien_collision(al_settings,screen,stats,sb,ship,aliens,bullets
         for aliens in collisions.values():
             stats.score +=al_settings.alien_points* len(aliens)
             sb.prep_score()
+        check_high_score(stats,sb)
 
     if len(aliens) == 0:
         #destroy existing bullets,speed up game and create new fleet
@@ -195,6 +196,12 @@ def update_aliens(al_settings,stats,screen,ship,aliens,bullets):
 
     #look for aliens reaching bottom of the screen
     check_bottom_aliens(al_settings,stats,screen,ship,aliens,bullets)
+
+def check_high_score(stats,sb):
+    #check to see if there is a new high score
+    if stats.score > stats.high_score:
+        stats.high_score = stats.score
+        sb.prep_high_score()
 
         
 
