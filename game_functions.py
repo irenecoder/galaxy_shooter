@@ -156,12 +156,14 @@ def change_fleet_direction(al_settings,aliens):
     al_settings.fleet_direction *= -1
     #al_settings.fleet_direction *= +1
 
-def ship_hit(al_settings,stats,screen,ship,aliens,bullets):
+def ship_hit(al_settings,screen,stats,sb,ship,aliens,bullets):
     #respond to ship being hit by aliens
     if stats.ships_left > 0:
 
         #decrement ships_left
         stats.ships_left -=1
+        #update scoreboard
+        sb.prep_ships()
 
         #empty the list of aliens and bullets
         aliens.empty()
@@ -177,29 +179,29 @@ def ship_hit(al_settings,stats,screen,ship,aliens,bullets):
         stats.game_active = False
         pygame.mouse.set_visible(True)
 
-def check_bottom_aliens(al_settings,stats,screen,ship,aliens,bullets):
+def check_bottom_aliens(al_settings,screen,stats,sb,ship,aliens,bullets):
     """check if any aliens have reached the bottom of the screen"""
     screen_rect = screen.get_rect()
     for alien in aliens.sprites():
         if alien.rect.bottom >=screen_rect.bottom:
             #treat it like ship got hit
-            ship_hit(al_settings, stats, screen, ship, aliens, bullets)
+            ship_hit(al_settings,screen,stats,sb, ship, aliens, bullets)
             break
 
 
 
 
-def update_aliens(al_settings,stats,screen,ship,aliens,bullets):
+def update_aliens(al_settings,screen,stats,sb,ship,aliens,bullets):
     """check if the fleet is at an edge and then update positions of all aliens in the fleet"""
     check_fleet_edges(al_settings,aliens)
     aliens.update()
     #look for alien-ship collisions
     if pygame.sprite.spritecollideany(ship,aliens):
-        ship_hit(al_settings,stats,screen,ship,aliens,bullets)
+        ship_hit(al_settings,screen,stats,sb,ship,aliens,bullets)
         #print("Ship hit!!")
 
     #look for aliens reaching bottom of the screen
-    check_bottom_aliens(al_settings,stats,screen,ship,aliens,bullets)
+    check_bottom_aliens(al_settings,screen,stats,sb,ship,aliens,bullets)
 
 def check_high_score(stats,sb):
     #check to see if there is a new high score

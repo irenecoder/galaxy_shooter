@@ -79,6 +79,7 @@ def run_game():
                 sb.prep_score()
                 sb.prep_high_score()
                 sb.prep_level()
+                sb.prep_ships()
 
                 #empty the list of aliens and bullets
                 aliens.empty()
@@ -99,7 +100,7 @@ def run_game():
 
             ship.update()
             gf.update_bullets(al_settings,screen,stats,sb,ship,aliens,bullets)
-            gf.update_aliens(al_settings,stats,screen,ship,aliens,bullets)
+            gf.update_aliens(al_settings,screen,stats,sb,ship,aliens,bullets)
 
         gf.update_screen(al_settings,screen,stats,sb,ship,aliens,bullets,play_button)
         

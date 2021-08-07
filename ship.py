@@ -1,8 +1,10 @@
 import pygame
+from pygame.sprite import Sprite
 
-class Ship():
+class Ship(Sprite):
     def __init__(self,al_settings,screen):
         #initialize the ship and get its initial position
+        super(Ship,self).__init__()
         self.screen=screen
         self.al_settings = al_settings
         #load image and get its rect
