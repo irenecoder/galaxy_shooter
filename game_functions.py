@@ -63,9 +63,13 @@ def check_bullet_alien_collision(al_settings,screen,stats,sb,ship,aliens,bullets
         check_high_score(stats,sb)
 
     if len(aliens) == 0:
-        #destroy existing bullets,speed up game and create new fleet
+        
+        #if the entire fleet is destroyed,start a new level
         bullets.empty()
         al_settings.increase_speed()
+        #increase level
+        stats.level += 1
+        sb.prep_level()
         create_fleet(al_settings, screen, ship, aliens)
 
     #Get rid of bullets that have disappeared
